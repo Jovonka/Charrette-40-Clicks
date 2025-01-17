@@ -20,15 +20,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 16px;
     text-align: center;
     border-radius: 8px;
     cursor: pointer;
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, opacity 0.3s, border-radius 0.3s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation:  idleColor 3s alternate ease-in-out;
+
+}
+@keyframes idleBounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
 }
 
+/* Idle Animation - Color Change */
+@keyframes idleColor {
+    0% { background-color: rgb(136, 136, 136); color: white; }
+    100% { background-color: rgb(100, 100, 100); color: white; }
+}
+.interactive-div:hover, 
+.interactive-div:active, 
+.interactive-div:focus {
+    animation: none; /* Stops idle animation */
+}
 /* Hover Animations (1-12) */
 /* 1. Pulse */
 @keyframes pulse {
@@ -430,7 +446,7 @@ body.white-bg {
     position: relative;
     background-color: #333;
    
-    color: white;
+
     cursor: pointer;
 }
 
@@ -709,11 +725,11 @@ h1{
 
 
 body{
-    font-family: "Jersey 15", serif;
+    font-family:monospace;
     font-weight: 400;
     font-style: normal;
     position: relative;
-    color: white;
+    
     text-align: center;
     font-size: 100%;
 }

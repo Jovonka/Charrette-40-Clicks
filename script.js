@@ -324,3 +324,4 @@ perspectiveDiv.addEventListener('click', function() {
 document.getElementById('redirectDiv').addEventListener('click', function () {
     window.open('https://www.omfgdogs.com/#', '_blank'); // Opens in a new tab
 });
+
