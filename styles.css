@@ -660,7 +660,7 @@ body.white-bg {
     height: 15px;
     background-color: rgb(255, 255, 134);
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    animation: fade-out 3s ease forwards infinite;
+    animation: fade-out 3s ease forwards;
 }
 
 /* Animation for the stars to disappear */
@@ -676,18 +676,49 @@ body.white-bg {
 }
 
 h1{
+    font-family: "Doto", serif;
+    font-optical-sizing: auto;
+    font-weight:900;
+    font-style: normal;
+    font-variation-settings:
+      "ROND" 0;
     position: relative;
     color: white;
     text-align: center;
-    font-size:200%;
+    font-size:500%;
+    top:30px;
+    margin-top: -9%;
+    margin-bottom: 15%;
+    animation: rainbow-text 3s infinite ease-in-out, bounce 5s infinite ease-in-out;
+}
+@keyframes rainbow-text {
+    0% { color: rgb(255, 166, 0); }
+    14% { color: rgb(255, 166, 0); }
+    28% { color: yellow; }
+    42% { color:  yellow; }
+    57% { color: greenyellow }
+    71% { color: greenyellow }
+    85% { color: orange; }
+    100% { color: orange;}
 }
 
-h5{
+@keyframes idleBounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+
+body{
+    font-family: "Jersey 15", serif;
+    font-weight: 400;
+    font-style: normal;
     position: relative;
     color: white;
     text-align: center;
     font-size: 100%;
 }
+
+  
 a {
     transition: transform 0.3s ease-in-out, box-shadow 0.6s ease-in-out;
 text-decoration: none;

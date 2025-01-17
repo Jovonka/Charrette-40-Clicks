@@ -1,3 +1,41 @@
+
+// Select the star spawner div
+const starSpawner = document.querySelector('.interactive-div.star-spawner');
+
+// Function to generate a random position
+function getRandomPosition() {
+    const randomX = Math.random() * window.innerWidth; // Random X within the viewport width
+    const randomY = Math.random() * window.innerHeight; // Random Y within the viewport height
+    return { x: randomX, y: randomY };
+}
+
+// Function to spawn a star
+function spawnStar() {
+    const { x, y } = getRandomPosition();
+
+    // Create the star element
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.left = `${x}px`;
+    star.style.top = `${y}px`;
+
+    // Append the star to the body
+    document.body.appendChild(star);
+
+    // Remove the star after its animation
+    setTimeout(() => {
+        star.remove();
+    }, 3000); // Matches the duration of the fade-out animation
+}
+
+// Add click event to the star spawner
+starSpawner.addEventListener('click', function () {
+    // Spawn multiple stars randomly
+    for (let i = 0; i < 10; i++) { // Adjust the number of stars to spawn
+        spawnStar();
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     // Existing Event Listeners (no changes here)
     const bubbleDiv = document.getElementById('bubbleEffectDiv');
@@ -229,14 +267,7 @@ videoContainerDiv.addEventListener('click', function() {
     this.classList.toggle('clicked');  // Toggle the 'clicked' class to keep the GIF displayed
 });
 
-// Select the cursor-toggle div
-const cursorToggleDiv = document.querySelector('.cursor-toggle');
 
-// Add click event to toggle the custom cursor class
-cursorToggleDiv.addEventListener('click', function() {
-    // Toggle the 'custom-cursor' class to change the cursor
-    this.classList.toggle('custom-cursor');
-});
 
 const morphDiv = document.querySelector('.morph');
 
@@ -292,41 +323,4 @@ perspectiveDiv.addEventListener('click', function() {
 
 document.getElementById('redirectDiv').addEventListener('click', function () {
     window.open('https://www.omfgdogs.com/#', '_blank'); // Opens in a new tab
-});
-
-// Select the star spawner div
-const starSpawner = document.querySelector('.interactive-div.star-spawner');
-
-// Function to generate a random position
-function getRandomPosition() {
-    const randomX = Math.random() * window.innerWidth; // Random X within the viewport width
-    const randomY = Math.random() * window.innerHeight; // Random Y within the viewport height
-    return { x: randomX, y: randomY };
-}
-
-// Function to spawn a star
-function spawnStar() {
-    const { x, y } = getRandomPosition();
-
-    // Create the star element
-    const star = document.createElement('div');
-    star.classList.add('star');
-    star.style.left = `${x}px`;
-    star.style.top = `${y}px`;
-
-    // Append the star to the body
-    document.body.appendChild(star);
-
-    // Remove the star after its animation
-    setTimeout(() => {
-        star.remove();
-    }, 3000); // Matches the duration of the fade-out animation
-}
-
-// Add click event to the star spawner
-starSpawner.addEventListener('click', function () {
-    // Spawn multiple stars randomly
-    for (let i = 0; i < 10; i++) { // Adjust the number of stars to spawn
-        spawnStar();
-    }
 });
