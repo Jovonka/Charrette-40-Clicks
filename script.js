@@ -317,7 +317,7 @@ function spawnStars() {
     document.body.appendChild(starContainer);
 
     // Generate a large number of stars
-    for (let i = 0; i < 200; i++) { // Adjust the number of stars as needed
+    for (let i = 0; i < 100; i++) { // Adjust the number of stars as needed
         const { x, y } = getRandomPosition();
 
         // Create the star element
