@@ -289,59 +289,44 @@ perspectiveDiv.addEventListener('click', function() {
     document.body.classList.toggle('perspective-active');
 });
 
+
+document.getElementById('redirectDiv').addEventListener('click', function () {
+    window.open('https://www.omfgdogs.com/#', '_blank'); // Opens in a new tab
+});
+
 // Select the star spawner div
 const starSpawner = document.querySelector('.interactive-div.star-spawner');
 
-// Keep track of whether stars are currently displayed
-let starsDisplayed = false;
-let starContainer;
-
 // Function to generate a random position
 function getRandomPosition() {
-    const randomX = Math.random() * document.documentElement.clientWidth; // Full document width
-    const randomY = Math.random() * document.documentElement.clientHeight; // Full document height
+    const randomX = Math.random() * window.innerWidth; // Random X within the viewport width
+    const randomY = Math.random() * window.innerHeight; // Random Y within the viewport height
     return { x: randomX, y: randomY };
 }
 
-// Function to spawn stars across the screen
-function spawnStars() {
-    // Create a container for the stars
-    starContainer = document.createElement('div');
-    starContainer.classList.add('star-container');
-    starContainer.style.position = 'absolute';
-    starContainer.style.top = '0';
-    starContainer.style.left = '0';
-    starContainer.style.width = '100vw';
-    starContainer.style.height = '100vh';
-    starContainer.style.pointerEvents = 'none'; // So it doesn't block interaction
-    document.body.appendChild(starContainer);
+// Function to spawn a star
+function spawnStar() {
+    const { x, y } = getRandomPosition();
 
-    // Generate a large number of stars
-    for (let i = 0; i < 100; i++) { // Adjust the number of stars as needed
-        const { x, y } = getRandomPosition();
+    // Create the star element
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.left = `${x}px`;
+    star.style.top = `${y}px`;
 
-        // Create the star element
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.left = `${x}px`;
-        star.style.top = `${y}px`;
+    // Append the star to the body
+    document.body.appendChild(star);
 
-        // Append the star to the container
-        starContainer.appendChild(star);
-    }
+    // Remove the star after its animation
+    setTimeout(() => {
+        star.remove();
+    }, 3000); // Matches the duration of the fade-out animation
 }
 
-// Event listener for the star spawner div
+// Add click event to the star spawner
 starSpawner.addEventListener('click', function () {
-    if (!starsDisplayed) {
-        // If stars are not already displayed, spawn them
-        spawnStars();
-        starsDisplayed = true;
-    } else {
-        // If stars are already displayed, remove them
-        if (starContainer) {
-            starContainer.remove();
-        }
-        starsDisplayed = false;
+    // Spawn multiple stars randomly
+    for (let i = 0; i < 10; i++) { // Adjust the number of stars to spawn
+        spawnStar();
     }
 });
